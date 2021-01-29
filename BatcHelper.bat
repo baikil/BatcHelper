@@ -3,7 +3,7 @@
 :: Go check the "varinfo.txt" to know what each variable do
 set txtcol=0f
 set appn=BatcHelper
-set appv=beta0.7
+set appv=0.7
 set appm=g
 goto :checkver
 
