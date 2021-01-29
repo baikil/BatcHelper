@@ -1,0 +1,10 @@
+A
+appm : The current app mode (c= command , g= guided)
+appn : The name of the app (Displayed in the title bar and menu)
+appv : The current version of the app (Displayed in the menu)
+
+S
+settingst : Check settings.txt first line to choose between custom or default settings (0= default , 1= custom)
+
+T
+txtcol : The default text color after a reset
