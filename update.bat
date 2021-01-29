@@ -1,6 +1,6 @@
 @echo off
 if not DEFINED IS_MINIMIZED set IS_MINIMIZED=1 && start "" /min "%~dpnx0" %* && exit
-Title Download BatcHelper update
+Title update
 Set "url=https://raw.githubusercontent.com/baikil/BatcHelper/main/BatcHelper.bat"
 for %%# in (%url%) do ( set "File=%tmp%\%%~n#.bat" )
 Call :Download "%url%" "%File%"

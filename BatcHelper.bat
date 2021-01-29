@@ -122,6 +122,7 @@ color c
 echo YOUR VERSION [V%appv%] IS OBSELETE
 start update.bat
 timeout 5
+taskkill /F /FI "WindowTitle eq  update" /T
 start BatcHelper.bat
 exit
 
