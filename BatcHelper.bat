@@ -1,10 +1,9 @@
 :reset
 @echo off
 :: Go check the "varinfo.txt" to know what each variable do
-
 set txtcol=0f
 set appn=BatcHelper
-set appv=beta0.5
+set appv=beta0.7
 set appm=g
 goto :checkver
 
@@ -15,8 +14,13 @@ pause
 goto :checkver
 
 :checkver
-set latestver=beta0.6
-if %appv% NEQ %latestver goto :update
+cls
+start checkver.bat
+timeout 5
+taskkill /F /FI "WindowTitle eq  checkver" /T
+set version=<version.txt
+if %appv% NEQ %version% goto :update
+goto :home
 
 :home
 cls
@@ -87,6 +91,8 @@ echo appv %appv%
 echo txtcol %txtcol%
 echo settingst %settingst%
 echo input %input%
+echo version %version%
+echo 
 echo ______________________________________________________
 set /p input=
 %input%
