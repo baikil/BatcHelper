@@ -5,20 +5,19 @@
 :defaultsettings
 ::set txtcol=0f
 set appn=BatcHelper
-set appv=beta 0.4
+set appv=beta 0.5
 set appm=g
 goto :home
 
 :customsettings
 cls
-echo CUSTOM SETTINGS IS NOT WORKING YET...
+echo THE CUSTOM SETTINGS ARE NOT WORKING YET...
 pause
 goto :home
 
 :home
 cls
 goto :%appm%home
-
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 :ghome
@@ -30,11 +29,12 @@ echo --------------------------------------------------------
 echo v %appv%
 echo.
 echo Commands : 
-echo Help - h
+echo Command list - comlist
 echo.
 echo Modes :
 echo Guided - gmod
 echo Command - cmod
+echo ______________________________________________________
 
 set /p input=
 goto :%input%
@@ -54,11 +54,16 @@ echo --------------------------------------------------------
 echo v %appv%
 echo.
 echo Commands : 
-echo Help - help
+echo cmd - help
+echo goto :comlist
 echo.
 echo Modes :
 echo Guided - gmod
 echo Command - cmod
+echo.
+echo Tip :
+echo Write "goto :" before using a "Guided mode" command
+echo ______________________________________________________
 
 set /p input=
 %input%
@@ -74,8 +79,12 @@ echo  -----------
 echo /DEBUG MODE/
 echo -----------
 echo.
-echo %settingst%
-
+echo appn %appn%
+echo appv %appv%
+echo txtcol %txtcol%
+echo settingst %settingst%
+echo input %input%
+echo ______________________________________________________
 set /p input=
 %input%
 pause
@@ -97,14 +106,17 @@ goto :home
 set appm=c
 goto :home
 
-:update
+:oldver
 cls
+color c
 echo YOUR VERSION [V%appv%] IS OBSELETE
-
+start https://github.com/baikil/BatcHelper.git
+pause
+exit
 
 :savesettings
 cls
-echo SAVE SETTINGS IS NOT WORKING YET...
+echo THE SAVE SETTINGS FEATURE IS NOT WORKING YET...
 pause
 goto :home
 
@@ -113,6 +125,29 @@ cls
 echo --------------------------------------------------------
 echo      %appn% v%appv% - Settings
 echo --------------------------------------------------------
+pause
+goto :home
 
-:ph
-start https://pornhub.com/
+:web
+cls
+echo Enter the domain name (ex: youtube)
+set /p input=
+start https://%input%.com
+pause
+goto :home
+
+:comlist
+cls
+echo To have more info about the commands, type h[command name]
+echo ----------------------------------------------------------
+echo reset
+echo home
+echo settings
+echo web
+echo savesettings
+echo comlist
+echo gmod
+echo cmod
+echo 
+pause
+goto :home
