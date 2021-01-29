@@ -2,18 +2,21 @@
 @echo off
 :: Go check the "varinfo.txt" to know what each variable do
 
-:defaultsettings
-::set txtcol=0f
+set txtcol=0f
 set appn=BatcHelper
-set appv=beta 0.5
+set appv=beta0.5
 set appm=g
-goto :home
+goto :checkver
 
 :customsettings
 cls
 echo THE CUSTOM SETTINGS ARE NOT WORKING YET...
 pause
-goto :home
+goto :checkver
+
+:checkver
+set latestver=beta0.6
+if %appv% NEQ %latestver goto :update
 
 :home
 cls
@@ -106,12 +109,13 @@ goto :home
 set appm=c
 goto :home
 
-:oldver
+:update
 cls
 color c
 echo YOUR VERSION [V%appv%] IS OBSELETE
-start https://github.com/baikil/BatcHelper.git
+start update.bat
 pause
+start BatcHelper.bat
 exit
 
 :savesettings
@@ -148,6 +152,5 @@ echo savesettings
 echo comlist
 echo gmod
 echo cmod
-echo 
 pause
 goto :home
