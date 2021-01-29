@@ -1,6 +1,7 @@
 @echo off
+if not DEFINED IS_MINIMIZED set IS_MINIMIZED=1 && start "" /min 
 title checkver
-tet "url=https://raw.githubusercontent.com/baikil/BatcHelper/main/version.txt"
+set "url=https://raw.githubusercontent.com/baikil/BatcHelper/main/version.txt"
 for %%# in (%url%) do ( set "File=%tmp%\%%~n#.txt" )
 Call :Download "%url%" "%File%"
 If exist "%File%" ( 

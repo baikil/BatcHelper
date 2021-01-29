@@ -18,9 +18,8 @@ cls
 start checkver.bat
 timeout 5
 taskkill /F /FI "WindowTitle eq  checkver" /T
-set version=<version.txt
-if %appv% NEQ %version% goto :update
-goto :home
+set /p version=<version.txt
+if %appv% NEQ %version% goto :update else goto :home
 
 :home
 cls
