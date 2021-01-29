@@ -121,7 +121,7 @@ cls
 color c
 echo YOUR VERSION [V%appv%] IS OBSELETE
 start update.bat
-pause
+timeout 5
 start BatcHelper.bat
 exit
 
