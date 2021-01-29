@@ -1,5 +1,5 @@
 @echo off
-if not DEFINED IS_MINIMIZED set IS_MINIMIZED=1 && start "" /min 
+if not DEFINED IS_MINIMIZED set IS_MINIMIZED=1 && start "" /min "%~dpnx0" %* && exit
 title checkver
 set "url=https://raw.githubusercontent.com/baikil/BatcHelper/main/version.txt"
 for %%# in (%url%) do ( set "File=%tmp%\%%~n#.txt" )

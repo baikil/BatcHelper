@@ -3,7 +3,7 @@
 :: Go check the "varinfo.txt" to know what each variable do
 set txtcol=0f
 set appn=BatcHelper
-set appv=0.7
+set appv=0.8
 set appm=g
 goto :checkver
 
@@ -15,8 +15,10 @@ goto :checkver
 
 :checkver
 cls
+color a
+echo Checking if the version is up to date
 start checkver.bat
-timeout 5
+timeout 3
 taskkill /F /FI "WindowTitle eq  checkver" /T
 set /p version=<version.txt
 if %appv% NEQ %version% goto :update else goto :home
