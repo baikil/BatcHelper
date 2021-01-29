@@ -3,7 +3,7 @@
 :: Go check the "varinfo.txt" to know what each variable do
 set txtcol=0f
 set appn=BatcHelper
-set appv=0.8
+set appv=0.9
 set appm=g
 goto :checkver
 
@@ -15,13 +15,22 @@ goto :checkver
 
 :checkver
 cls
-color a
+title %appn% - Checking version
+color e
 echo Checking if the version is up to date
 start checkver.bat
 timeout 3
 taskkill /F /FI "WindowTitle eq  checkver" /T
 set /p version=<version.txt
-if %appv% NEQ %version% goto :update else goto :home
+if %appv% LSS %version% goto :update else goto :home
+
+:uptodate
+cls
+title %appn% - Your version is up to date
+color a
+echo Your version [v%appv%] is up to date
+timeout 3
+goto :home
 
 :home
 cls
@@ -42,7 +51,10 @@ echo.
 echo Modes :
 echo Guided - gmod
 echo Command - cmod
-echo ______________________________________________________
+echo.
+echo Tip :
+echo Write "h" before command to have more info about the command
+echo ____________________________________________________________
 
 set /p input=
 goto :%input%
@@ -119,7 +131,7 @@ goto :home
 :update
 cls
 color c
-echo YOUR VERSION [V%appv%] IS OBSELETE
+echo Your version [v%appv%] is obselete
 start update.bat
 timeout 5
 taskkill /F /FI "WindowTitle eq  update" /T
@@ -160,5 +172,14 @@ echo savesettings
 echo comlist
 echo gmod
 echo cmod
+echo color
 pause
 goto :home
+
+:color
+cls
+echo Enter the color code (hcolor for the chart)
+set /p input=
+if %input%==hcolor goto :hcolor
+set txtcol=%input%
+goto  :home

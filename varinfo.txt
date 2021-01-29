@@ -8,3 +8,6 @@ settingst : Check settings.txt first line to choose between custom or default se
 
 T
 txtcol : The default text color after a reset
+
+V
+version : The most recent online version
