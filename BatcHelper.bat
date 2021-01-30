@@ -3,7 +3,7 @@
 :: Go check the "varinfo.txt" to know what each variable do
 set txtcol=0f
 set appn=BatcHelper
-set appv=0.9
+set appv=0.91
 set appm=g
 goto :checkver
 
@@ -152,14 +152,6 @@ echo --------------------------------------------------------
 pause
 goto :home
 
-:web
-cls
-echo Enter the domain name (ex: youtube)
-set /p input=
-start https://%input%.com
-pause
-goto :home
-
 :comlist
 cls
 echo To have more info about the commands, type h[command name]
@@ -167,12 +159,14 @@ echo ----------------------------------------------------------
 echo reset
 echo home
 echo settings
-echo web
+echo plugin - download plugins
 echo savesettings
-echo comlist
-echo gmod
-echo cmod
-echo color
+echo comlist - command list (you are here)
+echo gmod - Guided mode
+echo cmod - Command mode
+echo color - change the text color
+echo mail - send an email
+echo tts - Text to speach
 pause
 goto :home
 
@@ -183,3 +177,62 @@ set /p input=
 if %input%==hcolor goto :hcolor
 set txtcol=%input%
 goto  :home
+
+:hcolor
+cls
+echo    0 = Black       8 = Gray
+echo    1 = Blue        9 = Light Blue
+echo    2 = Green       A = Light Green
+echo    3 = Aqua        B = Light Aqua
+echo    4 = Red         C = Light Red
+echo    5 = Purple      D = Light Purple
+echo    6 = Yellow      E = Light Yellow
+echo    7 = White       F = Bright White
+pause
+goto :home
+
+:mail
+cls
+title %appn% - Mail
+if not exist mailplugin.bat goto :mailpni
+start mailplugin.bat
+exit
+:mailpni
+cls
+echo The mail plugin is not installed
+pause
+goto :plugin
+
+:plugin
+title %appn% - Install plugins
+cls
+echo Enter the name of the plugin that you want to download
+echo ------------------------------------------------------
+echo mailplugin
+echo ------------------------------------------------------
+set /p input=
+if %input%=mailplugin start 
+pause
+goto :home
+
+:tts
+title %appn% - Text to speach
+cls
+echo What do you want to say?
+set /p input=
+echo ' > "tts.vbs"
+echo set speech = Wscript.CreateObject("SAPI.spVoice") >> "tts.vbs"
+echo speech.speak "%input%" >> "tts.vbs"
+start tts.vbs
+echo ---------------------------------
+echo Do you want to do it again? (y/n)
+echo ---------------------------------
+set /p input=
+if %input%=y goto :tts else goto :home
+
+:#default
+title %appn% - 
+cls
+echo 
+pause
+goto :home
