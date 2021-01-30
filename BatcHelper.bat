@@ -224,11 +224,12 @@ echo ' > "tts.vbs"
 echo set speech = Wscript.CreateObject("SAPI.spVoice") >> "tts.vbs"
 echo speech.speak "%input%" >> "tts.vbs"
 start tts.vbs
-echo ---------------------------------
-echo Do you want to do it again? (y/n)
-echo ---------------------------------
+echo ----------------------------------------
+echo Do you want to say something else? (y/n)
+echo ----------------------------------------
 set /p input=
-if %input%=y goto :tts else goto :home
+if %input%==y goto :tts
+goto :home
 
 :#default
 title %appn% - 
