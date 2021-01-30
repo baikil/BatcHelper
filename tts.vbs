@@ -1,3 +1,3 @@
 ' 
 set speech = Wscript.CreateObject("SAPI.spVoice") 
-speech.speak "aaaaaaaaaaaaaaaaaaaaa" 
+speech.speak "Welcome to BatcHelper version 0.91" 
