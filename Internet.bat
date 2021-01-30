@@ -1,4 +1,4 @@
 @echo off
-set /p input=
-start https://%input%.com/
+set a=%1
+start https://%a%/
 exit
