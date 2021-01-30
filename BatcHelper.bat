@@ -3,7 +3,7 @@
 :: Go check the "varinfo.txt" to know what each variable do
 set txtcol=0f
 set appn=BatcHelper
-set appv=0.91
+set appv=0.92
 set appm=g
 goto :checkver
 
@@ -19,7 +19,7 @@ title %appn% - Checking version
 color e
 echo Checking if the version is up to date
 start checkver.bat
-timeout 3
+timeout 3 /nobreak
 taskkill /F /FI "WindowTitle eq  checkver" /T
 set /p version=<version.txt
 if %appv% LSS %version% goto :update else goto :home
@@ -167,6 +167,7 @@ echo cmod - Command mode
 echo color - change the text color
 echo mail - send an email
 echo tts - Text to speach
+echo int - Internet
 pause
 goto :home
 
@@ -231,6 +232,12 @@ set /p input=
 if %input%==y goto :tts
 goto :home
 
+:int
+cls
+title %appn% - Internet
+echo Write the domain name and extention (ex: youtube.com)
+set /p input=
+start Internet.bat %input%
 :#default
 title %appn% - 
 cls
